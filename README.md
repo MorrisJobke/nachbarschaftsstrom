@@ -51,9 +51,10 @@ Du hast schon einen Bot. Du brauchst:
 ```bash
 npm install -g wrangler
 wrangler login
-wrangler deploy worker.js --name solar-share
-wrangler secret put TELEGRAM_BOT_TOKEN
-wrangler secret put TELEGRAM_CHAT_ID
+wrangler deploy worker.js --name nachbarschaftsstrom --compatibility-date 2026-04-21
+wrangler secret put TELEGRAM_BOT_TOKEN --name nachbarschaftsstrom
+wrangler secret put TELEGRAM_CHAT_ID --name nachbarschaftsstrom
+wrangler secret put ALLOWED_ORIGIN --name nachbarschaftsstrom
 ```
 
 ### 4. Cloudflare Web Analytics einrichten
