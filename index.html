@@ -403,6 +403,72 @@
     .btn-interest { box-shadow: 4px 4px 0 var(--sun-deep); padding: 20px; font-size: 20px; }
     .btn-interest:hover { box-shadow: 6px 6px 0 var(--sun-deep); }
   }
+
+  /* Modal */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(27, 20, 16, 0.6);
+    z-index: 200;
+    padding: 24px;
+    overflow-y: auto;
+  }
+  .modal-overlay.open {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  .modal {
+    background: var(--cream);
+    border: 1.5px solid var(--line);
+    box-shadow: 8px 8px 0 var(--line);
+    max-width: 560px;
+    width: 100%;
+    margin-top: 48px;
+    padding: 36px;
+    position: relative;
+  }
+  .modal-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 20px;
+  }
+  .modal h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 20px;
+    margin-top: 24px;
+    margin-bottom: 10px;
+  }
+  .modal p {
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .modal p + p { margin-top: 10px; }
+  .modal a { color: var(--ink-soft); }
+  .modal-note {
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+  .modal-close {
+    position: absolute;
+    top: 16px; right: 16px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--ink-soft);
+    line-height: 1;
+    padding: 4px 8px;
+  }
+  .modal-close:hover { color: var(--ink); }
 </style>
 </head>
 <body>
@@ -465,11 +531,29 @@
   </section>
 
   <footer>
-    <span>© Private Nachbarschaftsaktion</span>
+    <span>© Morris Jobke</span>
     <a href="#" id="imprint-link">Impressum / Datenschutz</a>
   </footer>
 
 </main>
+
+<div class="modal-overlay" id="imprint-modal" role="dialog" aria-modal="true" aria-label="Impressum und Datenschutz">
+  <div class="modal">
+    <button class="modal-close" id="modal-close" aria-label="Schließen">×</button>
+    <div class="modal-label">Impressum & Datenschutz</div>
+
+    <h3>Angaben</h3>
+    <p>Morris Jobke<br>
+    Kontakt: <a href="mailto:imprint@morrisjobke.de">imprint@morrisjobke.de</a></p>
+    <p class="modal-note">Diese Website ist ein privates, nicht-kommerzielles Hobby-Projekt ohne wirtschaftliche Tätigkeit. Eine Impressumspflicht nach §5 TMG besteht daher nicht.</p>
+
+    <h3>Datenschutz</h3>
+    <p>Diese Seite setzt keine Cookies und speichert keine personenbezogenen Daten.</p>
+    <p><strong>Cloudflare Web Analytics:</strong> Cookielose, DSGVO-konforme Reichweitenmessung ohne Speicherung personenbezogener Daten. Anbieter: Cloudflare, Inc., 101 Townsend St, San Francisco, CA 94107, USA.</p>
+    <p><strong>Interesse-Button:</strong> Ein Klick sendet eine anonyme Benachrichtigung an mich. Kontaktangaben, die du freiwillig im Formular einträgst, werden einmalig per Telegram weitergeleitet und nicht dauerhaft gespeichert.</p>
+    <p><strong>Google Fonts:</strong> Diese Seite lädt Schriftarten von Google-Servern. Dabei wird deine IP-Adresse übertragen. Anbieter: Google LLC, 1600 Amphitheatre Pkwy, Mountain View, CA 94043, USA.</p>
+  </div>
+</div>
 
 <script>
   // ====== KONFIGURATION ======
@@ -576,6 +660,21 @@
       btnSubmit.textContent = 'Nochmal versuchen';
     }
   });
+
+  // Impressum Modal
+  const modal = document.getElementById('imprint-modal');
+  function closeModal() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('imprint-link').addEventListener('click', (e) => {
+    e.preventDefault();
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+  document.getElementById('modal-close').addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
 </script>
 </body>
 </html>
