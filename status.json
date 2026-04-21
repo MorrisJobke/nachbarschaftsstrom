@@ -1,0 +1,11 @@
+{
+  "updated_at": "2026-04-21T14:30:00+02:00",
+  "available_today": {
+    "active": false,
+    "windows": []
+  },
+  "available_tomorrow": {
+    "active": true,
+    "windows": ["11:00–14:00", "15:00–16:00"]
+  }
+}
