@@ -580,26 +580,32 @@
   }
 
   function renderStatus(data) {
-    // Erwartetes Format (anpassbar):
-    // {
-    //   "available_today":    { "active": true,  "windows": ["11:00–14:00"] },
-    //   "available_tomorrow": { "active": true,  "windows": ["10:00–13:00"] }
-    // }
     const dot   = document.getElementById('status-dot');
     const text  = document.getElementById('status-text');
     const times = document.getElementById('status-times');
 
-    const today    = data.available_today || { active: false, windows: [] };
-    const tomorrow = data.available_tomorrow || { active: false, windows: [] };
+    const todayStr    = new Date().toISOString().slice(0, 10);
+    const tomorrowStr = new Date(Date.now() + 86400000).toISOString().slice(0, 10);
 
-    if (today.active) {
+    const days = data.days || [];
+    const todayEntry    = days.find(d => d.date === todayStr)    || { active: false, windows: [] };
+    const tomorrowEntry = days.find(d => d.date === tomorrowStr) || { active: false, windows: [] };
+
+    const dataAge = data.updated_at ? (Date.now() - new Date(data.updated_at)) / 3600000 : 0;
+    const stale = dataAge > 30;
+
+    if (todayEntry.active) {
       dot.className = 'status-indicator on';
       text.textContent = 'Heute kostenloser Strom';
-      times.textContent = today.windows.join(' · ');
-    } else if (tomorrow.active) {
+      times.textContent = todayEntry.windows.join(' · ');
+    } else if (tomorrowEntry.active) {
       dot.className = 'status-indicator on';
       text.textContent = 'Morgen kostenloser Strom';
-      times.textContent = tomorrow.windows.join(' · ');
+      times.textContent = tomorrowEntry.windows.join(' · ');
+    } else if (stale) {
+      dot.className = 'status-indicator off';
+      text.textContent = 'Status veraltet';
+      times.textContent = 'Daten werden täglich ~14 Uhr aktualisiert';
     } else {
       dot.className = 'status-indicator off';
       text.textContent = 'Aktuell nicht verfügbar';

@@ -58,10 +58,14 @@ Das GitHub-Action-Skript und die Landing Page sprechen nur über die JSON-Strukt
 ```json
 {
   "updated_at": "ISO8601",
-  "available_today":    { "active": bool, "windows": ["HH:MM–HH:MM"] },
-  "available_tomorrow": { "active": bool, "windows": ["HH:MM–HH:MM"] }
+  "days": [
+    { "date": "YYYY-MM-DD", "active": bool, "windows": ["HH:MM–HH:MM"] },
+    { "date": "YYYY-MM-DD", "active": bool, "windows": [] }
+  ]
 }
 ```
+
+Das Frontend sucht per Datums-Vergleich den passenden Eintrag — robust über Mitternacht. Einträge älter als 30 Stunden lösen eine „Status veraltet"-Meldung aus.
 
 ### Rate Limiting via Cloudflare KV
 Pro IP max. 5 Requests/Stunde gegen `/interest`. Implementiert als Counter in KV mit TTL von 3600s. Wenn KV nicht gebunden ist, läuft der Worker ohne Rate Limit (Fallback).
