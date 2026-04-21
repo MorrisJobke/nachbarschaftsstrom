@@ -6,7 +6,7 @@
 |---------|------|-------|
 | Frontend | Plain HTML/CSS/JS | Zero-Build, zero-deps, minimal surface area |
 | Fonts | Google Fonts: Fraunces + IBM Plex Mono | Charakter, DSGVO-kritisch aber akzeptabel für diesen Use Case |
-| Hosting Frontend | GitHub Pages oder Cloudflare Pages | Gratis, Git-gekoppelt |
+| Hosting Frontend | GitHub Pages (entschieden) | Gratis, Git-gekoppelt, via GitHub Actions Workflow |
 | Serverless | Cloudflare Workers | Gratis bis 100k req/day, low latency |
 | State | Cloudflare KV (optional) | Nur für Rate Limiting |
 | Push-Benachrichtigung | Telegram Bot API | Existierender Bot, gratis, zuverlässig |

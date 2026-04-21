@@ -70,7 +70,7 @@ Pro IP max. 5 Requests/Stunde gegen `/interest`. Implementiert als Counter in KV
 
 | Komponente | Abhängigkeiten | Gehosted bei |
 |------------|----------------|--------------|
-| Landing Page | `status.json`, Worker | GitHub Pages / CF Pages |
+| Landing Page | `status.json`, Worker | GitHub Pages (nachbarschaftsstrom.jobke.org) |
 | `status.json` | EPEX Day-Ahead API (awattar/Energy-Charts) | GitHub Repo |
 | GitHub Action | EPEX API | GitHub Actions |
 | Worker | Telegram Bot API, KV | Cloudflare |

@@ -8,11 +8,11 @@ Erster MVP ist gebaut:
 - `worker.js` — Cloudflare Worker, empfängt POSTs auf `/interest`, schickt Telegram-Nachrichten
 - `status.json` — Beispiel-Datei, die von einem externen Skript befüllt wird
 
-Noch nicht deployed.
+GitHub Actions Deployment-Workflow (`.github/workflows/deploy.yml`) ist eingerichtet. Die Seite deployt automatisch auf GitHub Pages bei jedem Push auf `main`. Custom Domain `nachbarschaftsstrom.jobke.org` ist via CNAME konfiguriert. Einmalig in den Repo-Settings unter **Pages → Source → GitHub Actions** aktivieren.
 
 ## Nächste Schritte (in Reihenfolge)
 
-1. **Landing Page hosten** — vermutlich GitHub Pages im bestehenden Repo mit dem Preis-Skript
+1. **GitHub Pages in Repo-Settings aktivieren** — Settings → Pages → Source → „GitHub Actions" auswählen
 2. **Worker deployen** — im Cloudflare Dashboard, Telegram-Token und Chat-ID als Secrets setzen
 3. **KV Namespace "RATE_LIMIT"** anlegen und an den Worker binden
 4. **Cloudflare Web Analytics** aktivieren, Token in index.html eintragen

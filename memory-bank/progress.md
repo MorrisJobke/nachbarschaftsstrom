@@ -13,7 +13,8 @@
 ## Was noch zu bauen ist
 
 ### Bis zum ersten Go-Live
-- [ ] Landing Page tatsächlich deployen (GitHub Pages oder CF Pages)
+- [x] GitHub Actions Deployment-Workflow für GitHub Pages eingerichtet (`.github/workflows/deploy.yml`)
+- [ ] GitHub Pages in Repo-Settings aktivieren (Source → „GitHub Actions")
 - [ ] Worker deployen, Telegram-Secrets setzen
 - [ ] KV Namespace anlegen
 - [ ] Cloudflare Analytics Token holen und einsetzen
