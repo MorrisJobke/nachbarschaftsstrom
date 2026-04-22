@@ -1,7 +1,49 @@
 {
-  "updated_at": "2026-04-21T14:30:00+02:00",
+  "updated_at": "2026-04-22T09:27:18.116860+02:00",
   "days": [
-    { "date": "2026-04-21", "active": false, "windows": [] },
-    { "date": "2026-04-22", "active": true, "windows": ["11:00–14:00", "15:00–16:00"] }
+    {
+      "date": "2026-04-16",
+      "active": false,
+      "windows": []
+    },
+    {
+      "date": "2026-04-17",
+      "active": false,
+      "windows": []
+    },
+    {
+      "date": "2026-04-18",
+      "active": true,
+      "windows": [
+        "11:30–14:30"
+      ]
+    },
+    {
+      "date": "2026-04-19",
+      "active": true,
+      "windows": [
+        "12:45–13:00",
+        "13:15–16:30"
+      ]
+    },
+    {
+      "date": "2026-04-20",
+      "active": false,
+      "windows": []
+    },
+    {
+      "date": "2026-04-21",
+      "active": true,
+      "windows": [
+        "12:30–16:15"
+      ]
+    },
+    {
+      "date": "2026-04-22",
+      "active": true,
+      "windows": [
+        "10:45–16:45"
+      ]
+    }
   ]
 }
