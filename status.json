@@ -1,11 +1,6 @@
 {
-  "updated_at": "2026-07-30T15:08:34.502892+02:00",
+  "updated_at": "2026-07-31T15:16:02.057039+02:00",
   "days": [
-    {
-      "date": "2026-07-24",
-      "active": false,
-      "windows": []
-    },
     {
       "date": "2026-07-25",
       "active": true,
@@ -48,6 +43,11 @@
     },
     {
       "date": "2026-07-31",
+      "active": false,
+      "windows": []
+    },
+    {
+      "date": "2026-08-01",
       "active": false,
       "windows": []
     }
